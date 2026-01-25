@@ -39,7 +39,7 @@
       <li><a href="#achievements" class="nav-link">Achievements</a></li>
       <li><a href="#events" class="nav-link">Events</a></li>
       <li><a href="#team" class="nav-link">Team</a></li>
-      <li><a href="#contacts" class="nav-link">Contacts</a></li>
+      <li><a href="#contact" class="nav-link">Contacts</a></li>
       <li><a href="#tournament" class="nav-link btn-contact">Tournament</a></li>
     </ul>
   </nav>
@@ -72,7 +72,7 @@
 
 <section id="about" class="section about-section">
   <div class="section-header">
-    <span class="section-tag">Who We Are</span>
+    <span class="section-tag">Who Are We</span>
     <h2 class="section-title">About <span class="accent">Mora Chess</span></h2>
     <div class="title-decoration">
       <span></span>
@@ -113,7 +113,7 @@
     </div>
     <div class="about-image">
       <div class="image-frame">
-        <img src="./images/uni-games-2024.jpeg" alt="Mora Chess Team">
+        <img src="./images/2025slug.jpeg" alt="Mora Chess Team">
         <div class="frame-accent"></div>
       </div>
     </div>
@@ -325,7 +325,7 @@
       </div>
       <div class="event-content">
         <h3>Mora Chess Open Blitz</h3>
-        <p>Open rapid tournament for all skill levels</p>
+        <p>Open blitz tournament for all skill levels</p>
         <div class="event-details">
           <span><i class="fas fa-clock"></i> Blitz Format</span>
         </div>
@@ -373,7 +373,7 @@
     <div class="achievers-row">
       <div class="achiever-card-small">
         <div class="achiever-img-small">
-          <img src="./images/harshana.jpg" alt="Harshana Thilakarathne">
+          <img src="./images/harshana.jpeg" alt="Harshana Thilakarathne">
         </div>
         <div class="achiever-details">
           <h4>Harshana Thilakarathne</h4>
@@ -403,7 +403,7 @@
 
       <div class="achiever-card-small">
         <div class="achiever-img-small">
-          <img src="./images/maheesha.jpg" alt="Maheesha Dabarera">
+          <img src="./images/dabare.jpeg" alt="Maheesha Dabarera">
         </div>
         <div class="achiever-details">
           <h4>Maheesha Dabarera</h4>
@@ -441,13 +441,7 @@
   </p>
 
   <div class="contact-persons">
-    <div class="contact-person-card">
-      <div class="person-image">
-        <img src="./images/captain-men.jpg" alt="Harshana Thilakarathne">
-        <div class="person-overlay">
-          <i class="fas fa-chess-king"></i>
-        </div>
-      </div>
+    <div class="contact-person-card" style="background-image: url('./images/harshana.jpeg');">
       <div class="person-info">
         <h3>Harshana Thilakarathne</h3>
         <span class="person-role">Chess Captain – Men</span>
@@ -464,13 +458,7 @@
       </div>
     </div>
 
-    <div class="contact-person-card">
-      <div class="person-image">
-        <img src="./images/captain-women.jpg" alt="Sohanee Jayasundara">
-        <div class="person-overlay">
-          <i class="fas fa-chess-queen"></i>
-        </div>
-      </div>
+    <div class="contact-person-card" style="background-image: url('./images/captain-women.jpg');">
       <div class="person-info">
         <h3>Sohanee Jayasundara</h3>
         <span class="person-role">Chess Captain – Women</span>
@@ -487,13 +475,7 @@
       </div>
     </div>
 
-    <div class="contact-person-card">
-      <div class="person-image">
-        <img src="./images/vice-captain-men.jpg" alt="Sandeepa Gayashan">
-        <div class="person-overlay">
-          <i class="fas fa-chess-rook"></i>
-        </div>
-      </div>
+    <div class="contact-person-card" style="background-image: url('./images/gayya.jpeg');">
       <div class="person-info">
         <h3>Sandeepa Gayashan</h3>
         <span class="person-role">Chess Vice Captain – Men</span>
@@ -525,7 +507,6 @@
           <a href="mailto:uomchess@gmail.com">uomchess@gmail.com</a>
         </div>
       </div>
-      
       <div class="info-item">
         <div class="info-icon">
           <i class="fas fa-map-marker-alt"></i>
@@ -535,15 +516,16 @@
           <span>University of Moratuwa, Sri Lanka</span>
         </div>
       </div>
+      <div class="info-item facebook">
+        <div class="info-icon">
+          <i class="fab fa-facebook-f"></i>
+        </div>
+        <div class="info-text">
+          <span class="label">Facebook</span>
+          <a href="https://www.facebook.com/MoraChess" target="_blank" rel="noopener">MoraChess</a>
+        </div>
+      </div>
     </div>
-
-    <div class="social-links">
-      <a href="https://www.facebook.com/MoraChess" class="social-link"><i class="fab fa-facebook-f"></i></a>
-      <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-      <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-      <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
-    </div>
-  </div>
 </section>
 
 <!-- Footer -->
@@ -665,16 +647,34 @@
   const nextBtn = document.getElementById('nextBtn');
   const indicatorsContainer = document.getElementById('galleryIndicators');
   const totalSlides = slides.length;
-  let currentIndex = 1; // Start at 1 to show middle slide
+  let currentIndex = 0;
   let autoScrollTimer;
+  let isTransitioning = false;
 
-  // Create indicators
+  // Clone first 3 slides and append to end
+  for (let i = 0; i < 3; i++) {
+    const clone = slides[i].cloneNode(true);
+    clone.classList.add('clone');
+    galleryContainer.appendChild(clone);
+  }
+
+  // Clone last 3 slides and prepend to beginning
+  for (let i = totalSlides - 1; i >= totalSlides - 3; i--) {
+    const clone = slides[i].cloneNode(true);
+    clone.classList.add('clone');
+    galleryContainer.insertBefore(clone, galleryContainer.firstChild);
+  }
+
+  // Start at the first real slide (after prepended clones)
+  currentIndex = 3;
+
+  // Create indicators (only for real slides)
   for (let i = 0; i < totalSlides; i++) {
     const indicator = document.createElement('button');
     indicator.classList.add('gallery-indicator');
-    if (i === currentIndex) indicator.classList.add('active');
+    if (i === 0) indicator.classList.add('active');
     indicator.addEventListener('click', () => {
-      goToSlide(i);
+      goToSlide(i + 3); // +3 to account for prepended clones
       resetAutoScroll();
     });
     indicatorsContainer.appendChild(indicator);
@@ -682,25 +682,54 @@
 
   const indicators = document.querySelectorAll('.gallery-indicator');
 
-  function updateGallery() {
-    // Move container
-    const offset = (currentIndex - 1) * (100 / 3);
+  function updateGallery(transition = true) {
+    const slideWidth = 100 / 3;
+    const offset = currentIndex * slideWidth;
+    
+    if (transition) {
+      galleryContainer.style.transition = 'transform 0.5s ease-in-out';
+    } else {
+      galleryContainer.style.transition = 'none';
+    }
+    
     galleryContainer.style.transform = `translateX(-${offset}%)`;
 
-    // Update active states
-    slides.forEach((slide, i) => {
-      slide.classList.toggle('active', i === currentIndex);
+    // Update active class for center slide
+    const allSlides = galleryContainer.children;
+    Array.from(allSlides).forEach((slide, i) => {
+      // The middle visible slide is at currentIndex + 1
+      slide.classList.toggle('active', i === currentIndex + 1);
     });
+
+    // Update indicators (map to real slides)
+    const realIndex = (currentIndex - 3 + totalSlides) % totalSlides;
     indicators.forEach((ind, i) => {
-      ind.classList.toggle('active', i === currentIndex);
+      ind.classList.toggle('active', i === realIndex);
     });
   }
 
   function goToSlide(index) {
-    if (index < 0) index = totalSlides - 1;
-    if (index >= totalSlides) index = 0;
+    if (isTransitioning) return;
+    isTransitioning = true;
     currentIndex = index;
-    updateGallery();
+    updateGallery(true);
+
+    setTimeout(() => {
+      // Check if we're on a clone and need to jump to real slide
+      const allSlides = galleryContainer.children.length;
+      
+      if (currentIndex >= allSlides - 3) {
+        // At the end clones, jump to beginning real slides
+        currentIndex = 3;
+        updateGallery(false);
+      } else if (currentIndex < 3) {
+        // At the beginning clones, jump to end real slides
+        currentIndex = allSlides - 6;
+        updateGallery(false);
+      }
+      
+      isTransitioning = false;
+    }, 500);
   }
 
   function nextSlide() {
@@ -737,7 +766,7 @@
   galleryWrapper.addEventListener('mouseleave', startAutoScroll);
 
   // Initialize
-  updateGallery();
+  updateGallery(false);
   startAutoScroll();
 </script>
 
