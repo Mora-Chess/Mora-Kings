@@ -1,11 +1,48 @@
+// Load HTML sections dynamically
+async function loadSection(sectionName, containerId) {
+  try {
+    const response = await fetch(`./sections/${sectionName}.html`);
+    const html = await response.text();
+    document.getElementById(containerId).innerHTML = html;
+  } catch (error) {
+    console.error(`Error loading ${sectionName}:`, error);
+  }
+}
+
+// Load all sections
+async function loadAllSections() {
+  const sections = [
+    { name: 'header', container: 'header-container' },
+    { name: 'hero', container: 'hero-container' },
+    { name: 'events', container: 'events-container' },
+    { name: 'about', container: 'about-container' },
+    { name: 'achievements', container: 'achievements-container' },
+    { name: 'team', container: 'team-container' },
+    { name: 'contact', container: 'contact-container' },
+    { name: 'footer', container: 'footer-container' }
+  ];
+
+  // Load all sections
+  await Promise.all(
+    sections.map(section => loadSection(section.name, section.container))
+  );
+
+  // Initialize after all sections are loaded
+  initializeApp();
+}
+
+// Initialize all interactive features after sections are loaded
+function initializeApp() {
   // Mobile Navigation Toggle
   const navToggle = document.getElementById('navToggle');
   const navLinks = document.getElementById('navLinks');
   
-  navToggle.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
-    navToggle.classList.toggle('active');
-  });
+  if (navToggle && navLinks) {
+    navToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+      navToggle.classList.toggle('active');
+    });
+  }
 
   // Smooth Scroll
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -14,8 +51,10 @@
       const target = document.querySelector(this.getAttribute('href'));
       if(target) {
         target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        navLinks.classList.remove('active');
-        navToggle.classList.remove('active');
+        if (navLinks) {
+          navLinks.classList.remove('active');
+          navToggle.classList.remove('active');
+        }
       }
     });
   });
@@ -42,10 +81,12 @@
 
     // Navbar Background on Scroll
     const navbar = document.querySelector('.navbar');
-    if(window.scrollY > 50) {
-      navbar.classList.add('scrolled');
-    } else {
-      navbar.classList.remove('scrolled');
+    if(navbar) {
+      if(window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
     }
   });
 
@@ -67,12 +108,22 @@
     observer.observe(el);
   });
 
-  // Gallery Horizontal Auto-Scroll
+  // Initialize Gallery
+  initializeGallery();
+}
+
+// Gallery Horizontal Auto-Scroll
+function initializeGallery() {
   const galleryContainer = document.getElementById('galleryContainer');
-  const slides = document.querySelectorAll('.gallery-slide');
   const prevBtn = document.getElementById('prevBtn');
   const nextBtn = document.getElementById('nextBtn');
   const indicatorsContainer = document.getElementById('galleryIndicators');
+  
+  if (!galleryContainer || !prevBtn || !nextBtn || !indicatorsContainer) {
+    return; // Gallery not found, skip initialization
+  }
+
+  const slides = document.querySelectorAll('.gallery-slide');
   const totalSlides = slides.length;
   let currentIndex = 0;
   let autoScrollTimer;
@@ -189,9 +240,15 @@
 
   // Pause on hover
   const galleryWrapper = document.querySelector('.gallery-wrapper');
-  galleryWrapper.addEventListener('mouseenter', () => clearInterval(autoScrollTimer));
-  galleryWrapper.addEventListener('mouseleave', startAutoScroll);
+  if (galleryWrapper) {
+    galleryWrapper.addEventListener('mouseenter', () => clearInterval(autoScrollTimer));
+    galleryWrapper.addEventListener('mouseleave', startAutoScroll);
+  }
 
   // Initialize
   updateGallery(false);
   startAutoScroll();
+}
+
+// Load all sections when DOM is ready
+document.addEventListener('DOMContentLoaded', loadAllSections);
