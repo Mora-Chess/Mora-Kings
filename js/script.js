@@ -240,7 +240,9 @@ function initializeGallery() {
   const indicators = document.querySelectorAll('.gallery-indicator');
 
   function updateGallery(transition = true) {
-    const slideWidth = 100 / 3;
+    // Check if mobile view
+    const isMobile = window.innerWidth <= 600;
+    const slideWidth = isMobile ? 100 : 100 / 3;
     const offset = currentIndex * slideWidth;
     
     if (transition) {
@@ -254,8 +256,9 @@ function initializeGallery() {
     // Update active class for center slide
     const allSlides = galleryContainer.children;
     Array.from(allSlides).forEach((slide, i) => {
-      // The middle visible slide is at currentIndex + 1
-      slide.classList.toggle('active', i === currentIndex + 1);
+      // The middle visible slide is at currentIndex + 1 for desktop, currentIndex for mobile
+      const isActive = isMobile ? i === currentIndex : i === currentIndex + 1;
+      slide.classList.toggle('active', isActive);
     });
 
     // Update indicators (map to real slides)
@@ -316,13 +319,6 @@ function initializeGallery() {
     prevSlide();
     resetAutoScroll();
   });
-
-  // Pause on hover
-  const galleryWrapper = document.querySelector('.gallery-wrapper');
-  if (galleryWrapper) {
-    galleryWrapper.addEventListener('mouseenter', () => clearInterval(autoScrollTimer));
-    galleryWrapper.addEventListener('mouseleave', startAutoScroll);
-  }
 
   // Initialize
   updateGallery(false);

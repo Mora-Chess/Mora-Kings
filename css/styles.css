@@ -1,7 +1,78 @@
+@media (max-width: 600px) {
+  .gallery-header h3 {
+    font-size: 1.2rem;
+  }
+  .gallery-wrapper {
+    padding: 0;
+    max-width: 100%;
+    overflow: hidden;
+  }
+  .gallery-container {
+    height: auto;
+    display: flex;
+  }
+  .gallery-slide {
+    flex: 0 0 100% !important;
+    width: 100% !important;
+    min-width: 100% !important;
+    max-width: 100% !important;
+    padding: 15px;
+    box-sizing: border-box;
+  }
+  .gallery-slide img {
+    height: auto;
+    width: 100%;
+    max-height: 400px;
+    object-fit: contain;
+    border-radius: 12px;
+    filter: grayscale(0%) !important;
+    transform: scale(1) !important;
+    opacity: 1 !important;
+  }
+  .gallery-btn {
+    width: 36px;
+    height: 36px;
+    font-size: 1rem;
+    padding: 0;
+  }
+  .prev-btn {
+    left: 10px;
+  }
+  .next-btn {
+    right: 10px;
+  }
+  .gallery-indicators {
+    margin-top: 12px;
+  }
+  .slide-title {
+    font-size: 1rem;
+    margin-top: 10px;
+    color: var(--accent) !important;
+  }
+}
+@media (max-width: 600px) {
+  .hero-subtitle {
+    margin-bottom: 8px;
+    position: relative;
+    top: -18px;
+    font-size: 1.1rem;
+  }
+  .hero-title {
+    font-size: clamp(3.5rem, 16vw, 5rem);
+    margin-bottom: 18px;
+  }
+  .hero-buttons {
+    gap: 12px;
+  }
+  .hero-buttons .btn {
+    font-size: 0.85rem;
+    padding: 10px 22px;
+  }
+}
 /* ============================================
    MORA CHESS - Modern Redesign
    Inspired by Codemania v6.0 Style
-   Color Theme: #010024, #f9c939, Black, White
+  Color Theme: #010024, #f9c939, #010018 (Dark Blue), White
    ============================================ */
 
 /* CSS Variables */
@@ -11,7 +82,7 @@
   --accent: #f9c939;
   --accent-light: #ffd700;
   --accent-dark: #d4a82f;
-  --black: #010024;
+  --black: #010018;
   --white: #ffffff;
   --gray-900: #101010;
   --gray-800: #1a1a2e;
@@ -193,7 +264,7 @@ header {
   max-width: 900px;
   margin: 0 auto;
   padding: 12px 32px;
-  background: rgba(1, 0, 36, 0.97);
+  background: rgba(1, 0, 24, 0.97);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-radius: var(--radius-full);
@@ -204,7 +275,7 @@ header {
 }
 
 .navbar.scrolled {
-  background: rgba(1, 0, 36, 0.99);
+  background: rgba(1, 0, 24, 0.99);
   border-color: rgba(249, 201, 57, 0.1);
   box-shadow: 0 0 60px rgba(0, 0, 0, 0.9);
 }
@@ -604,6 +675,10 @@ header {
   color: var(--gray-300);
   margin-bottom: 48px;
   animation: fadeInUp 1s ease-out 0.6s backwards;
+  font-family: "Dancing Script", cursive;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
 }
 
 .tagline-word {
@@ -775,29 +850,6 @@ header {
   margin-bottom: 64px;
 }
 
-.section-tag {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 6px 16px;
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: var(--radius-full);
-  font-size: 0.75rem;
-  font-weight: 500;
-  margin-bottom: 16px;
-}
-
-.section-tag i {
-  color: var(--accent);
-}
-
-.section-tag span {
-  background: linear-gradient(to right, var(--accent), var(--accent-light));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
 .section-title {
   font-family: 'Playfair Display', serif;
   font-size: clamp(2rem, 5vw, 3.5rem);
@@ -888,7 +940,7 @@ header {
   max-width: 800px;
   margin: 0 auto 64px;
   padding: 32px;
-  background: var(--black);
+  background: #010018;
   border: 1px solid rgba(255, 255, 255, 0.05);
   border-radius: var(--radius-xl);
   text-align: center;
@@ -922,7 +974,7 @@ header {
   flex-direction: column;
   align-items: center;
   padding: 16px 24px;
-  background: rgba(249, 201, 57, 0.05);
+  background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(249, 201, 57, 0.1);
   border-radius: var(--radius-lg);
   min-width: 80px;
@@ -974,6 +1026,7 @@ header {
   border-radius: var(--radius-xl);
   overflow: hidden;
   transition: var(--transition);
+  background: #010018;
 }
 
 .event-card::before {
@@ -1460,9 +1513,9 @@ header {
    FOOTER
    ============================================ */
 footer {
+  background: black;
   position: relative;
   padding: 80px 5% 32px;
-  background: var(--primary);
   border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 
@@ -1636,7 +1689,7 @@ footer {
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.98);
+    background: rgba(1, 0, 24, 0.98);
     flex-direction: column;
     justify-content: center;
     gap: 16px;
@@ -1814,6 +1867,7 @@ footer {
   border-radius: var(--radius-xl);
   text-align: center;
   transition: var(--transition);
+  background: #010018;
 }
 
 .stat-card:hover {
@@ -1922,6 +1976,7 @@ footer {
   border: 1px solid rgba(255, 255, 255, 0.05);
   border-radius: var(--radius-lg);
   transition: var(--transition);
+  background: #010018;
 }
 
 .timeline-item:hover .timeline-content {
@@ -2143,6 +2198,7 @@ footer {
   transition: var(--transition);
   width: 200px;
   text-align: center;
+  background: #010018;
 }
 
 .achiever-card-small:hover {
@@ -2320,6 +2376,7 @@ footer {
   border: 1px solid rgba(255, 255, 255, 0.05);
   border-radius: var(--radius-lg);
   transition: var(--transition);
+  background: #010018;
 }
 
 .info-item:hover {
