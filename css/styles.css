@@ -604,6 +604,10 @@ header {
   color: var(--gray-300);
   margin-bottom: 48px;
   animation: fadeInUp 1s ease-out 0.6s backwards;
+  font-family: "Dancing Script", cursive;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
 }
 
 .tagline-word {
