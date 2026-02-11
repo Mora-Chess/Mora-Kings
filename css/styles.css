@@ -58,15 +58,111 @@
     font-size: 1.1rem;
   }
   .hero-title {
-    font-size: clamp(3.5rem, 16vw, 5rem);
+    font-size: clamp(4.5rem, 20vw, 6rem);
     margin-bottom: 18px;
+    line-height: 0.95;
   }
   .hero-buttons {
     gap: 12px;
   }
   .hero-buttons .btn {
+    font-size: 0.8rem;
+    padding: 10px 20px;
+    gap: 8px;
+  }
+
+  /* Countdown - keep items in same row */
+  .countdown-container {
+    padding: 20px 12px;
+  }
+  .countdown-timer {
+    flex-wrap: nowrap;
+    gap: 4px;
+  }
+  .countdown-item {
+    min-width: 50px;
+    padding: 8px 6px;
+  }
+  .countdown-value {
+    font-size: 1.4rem;
+  }
+  .countdown-label {
+    font-size: 0.5rem;
+  }
+  .countdown-separator {
+    font-size: 1.2rem;
+  }
+
+  /* Our Ambition - 2x2 grid */
+  .stats-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .stat-card {
+    padding: 20px 14px;
+  }
+  .stat-card .stat-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 1.1rem;
+    margin-bottom: 12px;
+  }
+  .stat-card .stat-label {
+    font-size: 0.75rem;
+    line-height: 1.5;
+  }
+
+  /* High Achievers - cluster/grid layout */
+  .achievers-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    justify-items: center;
+  }
+  .achiever-card-small {
+    width: 100%;
+  }
+  .achiever-img-small {
+    height: 140px;
+  }
+  .achiever-details {
+    padding: 10px;
+  }
+  .achiever-details h4 {
     font-size: 0.85rem;
-    padding: 10px 22px;
+  }
+  .achiever-details p {
+    font-size: 0.7rem;
+  }
+
+  /* Contact person cards - small, no images, closer */
+  .contact-persons {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .contact-person-card {
+    height: auto;
+    background-image: none !important;
+    background: var(--black);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  .contact-person-card::before {
+    display: none;
+  }
+  .person-info {
+    position: relative;
+    padding: 20px;
+  }
+  .person-info h3 {
+    font-size: 1.1rem;
+    margin-bottom: 4px;
+  }
+  .person-role {
+    margin-bottom: 10px;
+  }
+  .person-contact a {
+    font-size: 0.78rem;
   }
 }
 /* ============================================
