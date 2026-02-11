@@ -1385,7 +1385,6 @@ header {
   gap: 16px;
   margin-top: 32px;
   padding: 20px;
-  background: var(--black);
   border-radius: var(--radius-lg);
 }
 
