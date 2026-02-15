@@ -2575,16 +2575,19 @@ footer {
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(1, 0, 24, 0.98);
-    backdrop-filter: blur(20px);
+    width: 100vw;
+    height: 100vh;
+    background: rgba(1, 0, 24, 0.5);
+    backdrop-filter: blur(40px);
+    -webkit-backdrop-filter: blur(40px);
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
-    gap: 8px;
+    gap: 12px;
     transform: translateX(100%);
     transition: var(--transition);
     z-index: 999;
-    padding: 20px;
+    padding: 90px 20px 20px;
   }
 
   .nav-links.active {
@@ -2597,16 +2600,21 @@ footer {
     text-align: center;
     width: 100%;
     max-width: 280px;
-    border-radius: var(--radius-sm);
+    border-radius: 0;
+    color: #ffffff !important;
+    background: transparent !important;
   }
 
   .nav-link:hover,
   .nav-link.active {
-    background: rgba(249, 201, 57, 0.08);
+    color: #f9c939 !important;
+    background: transparent !important;
   }
 
   .btn-contact {
-    margin-top: 8px;
+    margin-top: 0;
+    background: transparent !important;
+    color: #ffffff !important;
   }
 
   /* --- HERO SECTION --- */
